@@ -10,3 +10,10 @@ CREATE TABLE users (
     user_type ENUM('Environmentalist', 'Supervisor') NOT NULL,  -- User role
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Record creation time
 );
+
+
+
+##Links:
+
+http://127.0.0.1/Projects/Web-Technology-Project-ecocharge_hub/ecocharge_hub/
+http://127.0.0.1/Projects/Web-Technology-Project-ecocharge_hub/ecocharge_hub/view/registration.php
