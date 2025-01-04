@@ -14,10 +14,10 @@
     <div class="dashboard-nav">
         <h3>Dashboard Navigation</h3>
         <ul>
-            <li><a href="account_verification.php">Account Verification with Document</a></li>
-            <li><a href="news_blog_management.php">Manage News/Blogs</a></li>
-            <li><a href="reviews_management.php">Manage EV Station Reviews</a></li>
-            <li><a href="profile.php">View/Edit Profile</a></li>
+            <li><a href="environmentalist/account_verification.php">Account Verification with Document</a></li>
+            <li><a href="environmentalist/news_blog_management.php">Manage News/Blogs</a></li>
+            <li><a href="environmentalist/reviews_management.php">Manage EV Station Reviews</a></li>
+            <li><a href="environmentalist/profile.php">View/Edit Profile</a></li>
         </ul>
     </div>
 
