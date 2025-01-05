@@ -12,7 +12,8 @@ CREATE TABLE users (
 );
 
 ##login:
-urmi 1234@2025
+urmi Urmi@2025
+kuratoliev
 
 ##Links:
 
