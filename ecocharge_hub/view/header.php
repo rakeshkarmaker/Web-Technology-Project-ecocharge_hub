@@ -12,14 +12,13 @@
             padding: 0;
             background-color: #f0fdf4; /* Light greenish background */
             color: #2d572c; /* Dark green text */
-            padding-top: 120px; /* Add padding to account for the fixed header */
         }
 
         header {
             background-color: #2d572c; /* Dark green */
             color: white;
             padding: 0;
-            position: fixed;
+            position: static;
             top: 0; /* Fix header at the top */
             left: 0;
             width: 100%; /* Ensure full width */
