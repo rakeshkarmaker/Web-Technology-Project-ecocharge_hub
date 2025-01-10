@@ -2,7 +2,7 @@
 include_once '../../model/blogDB.php';
 session_start();
 
-$blogs = readBlogs($_SESSION['user_id']); //v-2.1.0 $_SESSION['user_id'] is used to fetch the blogs for the logged in user. (one user)
+$blogs = readBlogs($_SESSION['user_id']); // Fetch blogs for the logged-in user.
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +17,11 @@ $blogs = readBlogs($_SESSION['user_id']); //v-2.1.0 $_SESSION['user_id'] is used
 
 <body>
     <div class="container">
-        <h1>News Blog Management</h1>
-        <a href="blog.php" class="btn btn-primary">Add New Blog</a>
+        <h1 class="page-title">News Blog Management</h1>
+        <div class="button-container">
+            <a href="blog.php" class="btn btn-primary">Add New Blog</a>
+        </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -36,26 +39,121 @@ $blogs = readBlogs($_SESSION['user_id']); //v-2.1.0 $_SESSION['user_id'] is used
                     </tr>
                 <?php else: ?>
                     <?php foreach ($blogs as $blog): ?>
-                        <!-- blog_id	user_id	title	content	created_at	updated_at -->
                         <tr>
-                            <!-- Issue: when i wrote  this title: "EV's are the future". The view output was like this: EV&#039;s are the future. -->
-                             <!-- Reason: e the htmlspecialchars() function (prevents XSS attacks) is encoding special characters like ' into their corresponding HTML entities. -->
-                             <!-- v2.1.0- Solve: while displaying just decode these HTML entities back into their character representations by using html_entity_decode(). -->
                             <td><?php echo html_entity_decode(htmlspecialchars($blog['blog_id'])); ?></td>
                             <td><?php echo html_entity_decode(htmlspecialchars($blog['title'])); ?></td>
                             <td><?php echo html_entity_decode(htmlspecialchars($blog['user_id'])); ?></td>
                             <td><?php echo html_entity_decode(htmlspecialchars($blog['created_at'])); ?></td>
                             <td>
-                                <a href="blog.php?action=edit&id=<?php echo htmlspecialchars($blog['blog_id']); ?>">Edit</a>
-                                <a href="../../controller/blogController.php?action=delete&id=<?php echo htmlspecialchars($blog['blog_id']); ?>" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</a>
+                                <a href="blog.php?action=edit&id=<?php echo htmlspecialchars($blog['blog_id']); ?>" class="btn btn-edit">Edit</a>
+                                <a href="../../controller/blogController.php?action=delete&id=<?php echo htmlspecialchars($blog['blog_id']); ?>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
             </tbody>
         </table>
     </div>
+
+    <style>
+        /* Container and general styles */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Page title */
+        .page-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Button container */
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-edit {
+            background-color: #f39c12;
+        }
+
+        .btn-edit:hover {
+            background-color: #e67e22;
+        }
+
+        .btn-delete {
+            background-color: #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+        /* Table styles */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f1f1f1;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .table th, .table td {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
 </body>
 
 </html>
