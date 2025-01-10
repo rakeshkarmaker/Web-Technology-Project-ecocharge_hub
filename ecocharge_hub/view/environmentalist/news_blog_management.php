@@ -47,7 +47,7 @@ $blogs = readBlogs($_SESSION['user_id']); //v-2.1.0 $_SESSION['user_id'] is used
                             <td><?php echo html_entity_decode(htmlspecialchars($blog['created_at'])); ?></td>
                             <td>
                                 <a href="blog.php?action=edit&id=<?php echo htmlspecialchars($blog['blog_id']); ?>">Edit</a>
-                                <a href="../../controller/blogController.php?action=id=<?php echo htmlspecialchars($blog['blog_id']); ?>" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</a>
+                                <a href="../../controller/blogController.php?action=delete&id=<?php echo htmlspecialchars($blog['blog_id']); ?>" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
