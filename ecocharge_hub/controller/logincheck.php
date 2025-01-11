@@ -18,21 +18,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = get($query);
 
     if (!empty($result)) {
-        // User exists, fetch the first result
+        // If the user exists, then fetching the first result
         $user = $result[0];
 
-        // Verify the password
+        // Verifying the password
         if (password_verify($password, $user['password'])) {
             // Store user details in session and redirect
             $_SESSION['user_id'] = $user['user_id']; //v1.0.2- Changed the session variable name from id to user_id
             $_SESSION['username'] = $user['username'];
             $_SESSION['user_type'] = $user['user_type'];//v1.0.2- Changed the session variable name from userType to  user_type
+            $_SESSION['last_activity'] = time();
 
             // Redirect based on user type
             if ($user['user_type'] == 'Environmentalist') {//v1.0.2- Changed the session variable name from userType to  user_type
-                header('Location: ../view/environmentalist_dashboard.php');
+                header('Location: ../view/environmentalist/dashboard.php');
             } elseif ($user['user_type'] == 'Supervisor') {//v1.0.2- Changed the session variable name from userType to  user_type
-                header('Location: ../view/supervisor_dashboard.php');
+                header('Location: ../view/supervisor/dashboard.php');
+            }else{
+                echo "not available";
             }
             exit();
         } else {
