@@ -33,7 +33,7 @@ $isEditMode = isset($_GET['edit']);
                     <input type="text" id="name" name="name" value="<?php echo $userProfile['name']; ?>" required>
 
                     <label for="username"><strong>Username:</strong></label>
-                    <input type="text" id="username" value="<?php echo $userProfile['username']; ?>" disabled>
+                    <input type="text" id="username" name="username" value="<?php echo $userProfile['username']; ?>" required>
 
                     <label for="email"><strong>Email:</strong></label>
                     <input type="email" id="email" name="email" value="<?php echo $userProfile['email']; ?>" required>

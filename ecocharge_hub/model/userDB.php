@@ -11,24 +11,20 @@ function viewProfile($user_id) {
 }
 
 //v3.0.0- Update a blog post
-function updateProfile($user_id, $name, $phone, $address, $bio, $profile_pic, $social_links) {
+function updateProfile($user_id, $name, $email, $phone, $username ) {
     $user_id = intval($user_id); // Ensure $user_id is an integer
     $name = htmlspecialchars($name, ENT_QUOTES); // Sanitize input
+    $email = htmlspecialchars($email, ENT_QUOTES); // Sanitize input
     $phone = htmlspecialchars($phone, ENT_QUOTES); // Sanitize input
-    $address = htmlspecialchars($address, ENT_QUOTES); // Sanitize input
-    $bio = htmlspecialchars($bio, ENT_QUOTES); // Sanitize input
-    $profile_pic = htmlspecialchars($profile_pic, ENT_QUOTES); // Sanitize input
-    $social_links = htmlspecialchars($social_links, ENT_QUOTES); // Sanitize input, ensure JSON format is valid
+    $username = htmlspecialchars($username, ENT_QUOTES); // Sanitize input
 
     $query = "
         UPDATE users 
         SET 
             name = '$name', 
+            email = '$email', 
             phone = '$phone', 
-            address = '$address', 
-            bio = '$bio', 
-            profile_pic = '$profile_pic', 
-            social_links = '$social_links' 
+            username = '$username'
         WHERE user_id = '$user_id'
     ";
     return execute($query); // Use execute() to run the query
