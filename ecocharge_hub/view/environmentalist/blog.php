@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once('../../controller/authGuard.php');
 include_once '../../model/blogDB.php';
 
 $user_id = $_SESSION['user_id'] ?? null; // Default: null if user_id is not set
