@@ -8,7 +8,7 @@ $action_type = $_GET['action'] ?? 'add'; // Default action is 'add'
 $blog = null;   // Default: null
 
 // If editing or viewing, retrieve the blog data
-if (($action_type === 'edit' || $action_type === 'view') && isset($_GET['id'])) {
+if (($action_type === 'edit' ) && isset($_GET['id'])) {
     $blog_id = $_GET['id'];
     $blog = readBlog($blog_id)[0]; // Fetch blog details from the database. v-2.1.0- Here readBlog returns an array of associative arrays. As, we have here only one array, we will be using the first index [0] to get the first array of the whole array.
     
@@ -55,9 +55,13 @@ if (($action_type === 'edit' || $action_type === 'view') && isset($_GET['id'])) 
                     <textarea id="content" name="content" rows="10" required><?php echo $blog['content'] ?? ''; ?></textarea>
                 </div>
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
+                
                 <?php if ($action_type === 'edit'): ?>
                     <input type="hidden" name="blog_id" value="<?php echo $blog['blog_id']; ?>">
                 <?php endif; ?>
+
+                
                 <div class="form-actions">
                     <button type="submit" name="<?php echo $action_type; ?>" value="<?php echo $action_type; ?>" class="btn btn-primary">
                         <?php echo ucfirst($action_type); ?>

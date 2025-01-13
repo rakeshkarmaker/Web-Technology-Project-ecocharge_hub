@@ -26,14 +26,6 @@ $user_id = $_SESSION['user_id'] ?? null; // Default: null if user_id is not set
         <label for="file">Choose a Document:</label><br>
         <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" required><br><br>
         
-        <!-- Document Status -->
-        <!-- <label for="status">Select Status:</label><br>
-        <select id="status" name="status" required>
-            <option value="Pending" selected>Pending</option>
-            <option value="Approved">Approved</option>
-            <option value="Rejected">Rejected</option>
-        </select><br><br> -->
-        
         <!-- Submit Button -->
         <button type="submit">Submit Document</button>
     </form>
