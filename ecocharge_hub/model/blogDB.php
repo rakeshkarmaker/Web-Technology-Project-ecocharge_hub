@@ -3,7 +3,7 @@ include_once 'db_connection.php'; // Include the database connection file
 
 // Create a new blog post
 function createBlog($user_id, $title, $content) {
-    $user_id = intval($user_id); // Ensure $user_id is an integer
+    $user_id = intval(value: $user_id); // Ensure $user_id is an integer
     $title = htmlspecialchars($title, ENT_QUOTES); // Sanitize input
     $content = htmlspecialchars($content, ENT_QUOTES); // Sanitize input
 
@@ -19,6 +19,12 @@ function readBlogs($user_id) {
     return get($query); // Use get() to fetch data
 }
 
+// v4.0.0-Read all  blog posts
+function readAllBlogs($orderBy) {
+    $query = "SELECT * FROM BLOGS ORDER BY created_at $orderBy";
+    return get($query); // Use get() to fetch data
+}
+
 //v-2.1.0- Read one blog Post.
 function readBlog($blog_id) {
     $blog_id = intval($blog_id); //intval => Get the integer value of a variable Returns the int value of value on success, or 0 on failure.
@@ -28,7 +34,7 @@ function readBlog($blog_id) {
 
 // Update a blog post
 function updateBlog($blog_id, $title, $content) {
-    $blog_id = intval($blog_id); // Ensure $blog_id is an integer
+    $blog_id = intval(value: $blog_id); // Ensure $blog_id is an integer
     $title = htmlspecialchars($title, ENT_QUOTES); // Sanitize input
     $content = htmlspecialchars($content, ENT_QUOTES); // Sanitize input
 

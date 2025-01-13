@@ -19,8 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query = "INSERT INTO DOCUMENTS (user_id, file_path, status) VALUES ('$user_id', '$filePath', 'Pending')";
             
             if (execute($query)) { 
-                echo "Document submitted successfully!";
-                header("Location: ../index.php");
+                echo "Document submitted successfully! Your account will be verified soon.";
+                // header("Location: ../index.php");
+                echo"<button`>
+                    <a href=\"../view/environmentalist/dashboard.php\">Account Verification with Document</a>
+                </button>";
 
             } else {
                 echo "Error saving document details to the database.";

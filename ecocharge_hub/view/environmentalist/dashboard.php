@@ -1,7 +1,7 @@
 <?php 
+    include_once('../../controller/authGuard.php');
     // Include header
     include('../header.php');
-    include_once('../../controller/authGuard.php');
 ?>
 
 <!-- Dashboard Content -->
@@ -10,7 +10,7 @@
         <h2>Welcome to Your Environmentalist Dashboard</h2>
         <p>Manage your eco-friendly activities and contribute to a greener future!</p>
     </div>
-
+    
     <!-- Dashboard Navigation -->
     <div class="dashboard-nav">
         <h3>Dashboard Navigation</h3>

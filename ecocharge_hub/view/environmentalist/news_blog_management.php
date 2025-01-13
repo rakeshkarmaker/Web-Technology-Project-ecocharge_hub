@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once '../../model/blogDB.php';
 include_once('../../controller/authGuard.php');
+include_once '../../model/blogDB.php';
 
 $blogs = readBlogs($_SESSION['user_id']); // Fetch blogs for the logged-in user.
 ?>
@@ -28,6 +28,7 @@ $blogs = readBlogs($_SESSION['user_id']); // Fetch blogs for the logged-in user.
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <!-- <th>Picture</th> -->
                     <th>Author</th>
                     <th>Date</th>
                     <th>Actions</th>
@@ -41,13 +42,14 @@ $blogs = readBlogs($_SESSION['user_id']); // Fetch blogs for the logged-in user.
                 <?php else: ?>
                     <?php foreach ($blogs as $blog): ?>
                         <tr>
-                            <td><?php echo html_entity_decode(htmlspecialchars($blog['blog_id'])); ?></td>
-                            <td><?php echo html_entity_decode(htmlspecialchars($blog['title'])); ?></td>
-                            <td><?php echo html_entity_decode(htmlspecialchars($blog['user_id'])); ?></td>
-                            <td><?php echo html_entity_decode(htmlspecialchars($blog['created_at'])); ?></td>
+                            <td><?php echo $blog['blog_id']; ?></td>
+                            <td><?php echo $blog['title']; ?></td>
+                            <td><?php echo $blog['user_id']; ?></td>
+                            <td><?php echo $blog['created_at']; ?></td>
                             <td>
-                                <a href="blog.php?action=edit&id=<?php echo htmlspecialchars($blog['blog_id']); ?>" class="btn btn-edit">Edit</a>
+                                <a href="blog.php?action=edit&id=<?php echo $blog['blog_id']; ?>" class="btn btn-edit">Edit</a>
                                 <a href="../../controller/blogController.php?action=delete&id=<?php echo htmlspecialchars($blog['blog_id']); ?>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</a>
+                                <a href="viewBlog.php?&id=<?php echo $blog['blog_id']; ?>">View</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
