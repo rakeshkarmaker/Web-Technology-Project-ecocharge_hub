@@ -69,11 +69,8 @@
         }
 
         a {
-            display: block;
-            text-align: center;
             color: #2d572c;
             text-decoration: none;
-            margin-top: 15px;
         }
 
         a:hover {

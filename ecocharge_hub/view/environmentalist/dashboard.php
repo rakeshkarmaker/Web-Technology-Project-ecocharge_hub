@@ -7,7 +7,7 @@
 <!-- Dashboard Content -->
 <div class="dashboard-container">
     <div class="dashboard-header">
-        <h2>Welcome to Your Environmentalist Dashboard</h2>
+        <h2>Welcome to Environmentalist Dashboard</h2>
         <p>Manage your eco-friendly activities and contribute to a greener future!</p>
     </div>
     

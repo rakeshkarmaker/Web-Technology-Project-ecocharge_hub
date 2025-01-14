@@ -5,10 +5,8 @@ include_once '../../model/userDB.php';
 $id = intval($_SESSION['user_id']);
 $userProfile = viewProfile($id)[0];
 
-
 // Determine the mode (view or edit) based on the query parameter
 $isEditMode = isset($_GET['edit']);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,10 +62,124 @@ $isEditMode = isset($_GET['edit']);
             </div>
             <div class="profile-actions">
                 <a href="profile.php?edit" class="btn btn-primary">Edit Profile</a>
-                <a href="../../controller/logout.php" class="btn btn-secondary">Logout</a>
+                <a href="dashboard.php" class="btn btn-secondary">Go Back</a>
             </div>
         <?php endif; ?>
     </div>
 </body>
 
+<!-- CSS at the end -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .profile-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        max-width: 800px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .edit-profile-container, .profile-details {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        text-align: left;
+    }
+
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #45a049;
+    }
+
+    .btn-secondary {
+        background-color: #f44336;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #e53935;
+    }
+
+    .profile-actions {
+        margin-top: 20px;
+    }
+
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        object-fit: cover;
+    }
+
+    .profile-details h2 {
+        font-size: 22px;
+        color: #333;
+    }
+
+    .profile-details p {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .error-message {
+        color: red;
+        background-color: #fdd;
+        padding: 15px;
+        border: 1px solid red;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+</style>
 </html>
