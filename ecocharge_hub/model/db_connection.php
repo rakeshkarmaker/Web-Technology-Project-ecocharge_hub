@@ -36,8 +36,9 @@ function execute($query)
             mysqli_close($conn);  // Close the db_connect after query execution
             return true;
         } else {
+            $error =mysqli_error($conn); //4.0.3- show error before close
             mysqli_close($conn);  //v1.0.1- Close the db_connect after query execution
-            return mysqli_error($conn);  // Return error message if query fails
+            return $error;  // Return error message if query fails
         }
     } else {
         return "Database db_connect failed: " . mysqli_connect_error();
