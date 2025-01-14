@@ -2,13 +2,14 @@
 include_once 'db_connection.php'; // Include the database connection file
 
 // Create a new blog post
-function createBlog($user_id, $title, $content) {
+function createBlog($user_id, $title, $content,$img) {
     $user_id = intval(value: $user_id); // Ensure $user_id is an integer
     $title = htmlspecialchars($title, ENT_QUOTES); // Sanitize input
     $content = htmlspecialchars($content, ENT_QUOTES); // Sanitize input
+    $img = htmlspecialchars($img, ENT_QUOTES); // Sanitize input
 
     //blog_id	user_id	title	content	created_at	updated_at	
-    $query = "INSERT INTO blogs VALUES(NULL,$user_id, '$title', '$content', NOW(), NOW())";
+    $query = "INSERT INTO blogs VALUES(NULL,$user_id, '$title', '$content','$img', NOW(), NOW())";
     return execute($query); // Use execute() to run the query
 }
 
@@ -33,18 +34,21 @@ function readBlog($blog_id) {
 }
 
 // Update a blog post
-function updateBlog($blog_id, $title, $content) {
+function updateBlog($blog_id, $title, $content,$img) {
     $blog_id = intval(value: $blog_id); // Ensure $blog_id is an integer
     $title = htmlspecialchars($title, ENT_QUOTES); // Sanitize input
     $content = htmlspecialchars($content, ENT_QUOTES); // Sanitize input
+    $img = htmlspecialchars($img, ENT_QUOTES); // Sanitize input
 
-    $query = "UPDATE BLOGS SET title = '$title', content = '$content' WHERE blog_id = '$blog_id'";
+
+    $query = "UPDATE BLOGS SET title = '$title', content = '$content',picture_path ='$img' WHERE blog_id = '$blog_id'";
     return execute($query); // Use execute() to run the query
 }
 
 // Delete a blog post
 function deleteBlog($blog_id) {
     $blog_id = intval($blog_id); // Ensure $blog_id is an integer
+
     $query = "DELETE FROM BLOGS WHERE blog_id = '$blog_id'";
     return execute($query); // Use execute() to run the query
 }
