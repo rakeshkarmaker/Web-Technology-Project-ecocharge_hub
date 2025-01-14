@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once('../../model/reviewDB.php'); // Include the Review database functions
-include_once('../../model/evStationDB.php'); // Include the EV Station database functions
+include_once('../model/reviewDB.php'); // Include the Review database functions
+include_once('../model/evStationDB.php'); // Include the EV Station database functions
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

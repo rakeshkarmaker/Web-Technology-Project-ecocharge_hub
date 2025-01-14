@@ -3,6 +3,7 @@ session_start();
 include_once('../../controller/authGuard.php');
 include_once '../../model/reviewDB.php';
 include_once '../../model/userDB.php';
+include_once('../../model/evStationDB.php');
 
 $reviews = readReviewsByUser($_SESSION['user_id']); // Fetch reviews for the logged-in user.
 ?>
