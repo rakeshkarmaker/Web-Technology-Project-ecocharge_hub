@@ -2,6 +2,7 @@
 session_start();
 include_once('../../controller/authGuard.php');
 include_once '../../model/blogDB.php';
+include_once '../../model/userDB.php';
 
 $blogs = readBlogs($_SESSION['user_id']); // Fetch blogs for the logged-in user.
 ?>
@@ -44,7 +45,7 @@ $blogs = readBlogs($_SESSION['user_id']); // Fetch blogs for the logged-in user.
                         <tr>
                             <td><?php echo $blog['blog_id']; ?></td>
                             <td><?php echo $blog['title']; ?></td>
-                            <td><?php echo $blog['user_id']; ?></td>
+                            <td><?php echo viewProfileName($blog['user_id'])[0]['username']; // returns array(1) { [0]=> array(1) { ["username"]=> string(4) "urmi" } } ?></td>
                             <td><?php echo $blog['created_at']; ?></td>
                             <td>
                                 <a href="blog.php?action=edit&id=<?php echo $blog['blog_id']; ?>" class="btn btn-edit">Edit</a>

@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate the file upload
     if ($file['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../uploads/verification_doc/verification_doc'; // Directory to store uploaded files
+        $uploadDir = '../uploads/verification_doc/'; // Directory to store uploaded files
         $fileName = basename($file['name']);
         $filePath = $uploadDir . time() . '_' . $fileName; // Add a timestamp to avoid duplicates
 

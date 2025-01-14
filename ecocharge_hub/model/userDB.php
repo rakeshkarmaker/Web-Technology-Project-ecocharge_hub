@@ -10,6 +10,13 @@ function viewProfile($user_id) {
     return get($query); // Use get() to fetch profile data
 }
 
+
+function viewProfileName($user_id) {
+    $user_id = intval($user_id); // Ensure $user_id is an integer
+    $query = "SELECT username FROM users WHERE user_id = '$user_id'";
+    return get($query); // Use get() to fetch profile data
+}
+
 //v3.0.0- Update a blog post
 function updateProfile($user_id, $name, $email, $phone, $username ) {
     $user_id = intval($user_id); // Ensure $user_id is an integer

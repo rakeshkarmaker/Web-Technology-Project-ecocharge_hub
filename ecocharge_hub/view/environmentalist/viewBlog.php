@@ -35,7 +35,7 @@ if (!$blog) {
     <div class="container">
         <h1 class="page-title"><?php echo  $blog['title']; ?></h1>
         <div class="blog-details">
-            <img src="<?php echo $blog['picture_path'] ?? '../../images/dummy.jpg'; ?>" alt="../../images/dummy.jpg" class="blog-image">
+            <img src="<?php echo "../".$blog['picture_path'] ?? '../../images/dummy.jpg'; ?>" alt="Image" class="blog-image">
             <p class="blog-author">By: <?php echo  $blog['user_id']; ?></p>
             <p class="blog-date">Published on: <?php echo date('M d, Y', strtotime($blog['created_at'])); ?></p>
             <div class="blog-content">
@@ -49,6 +49,7 @@ if (!$blog) {
         </div>
     </div>
     <style>
+
         .container {
             width: 90%;
             max-width: 800px;
