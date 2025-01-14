@@ -67,12 +67,38 @@ CREATE TABLE FAQS (
     category VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
 
 
 
-##login:
+-- Inserting dummy users into USERS table
+INSERT INTO USERS (user_id, username, email, password, created_at)
+VALUES 
+(NULL, 'user1', 'user1@example.com', 'password123', NOW()),
+(NULL, 'user2', 'user2@example.com', 'password123', NOW()),
+(NULL, 'user3', 'user3@example.com', 'password123', NOW()),
+(NULL, 'user4', 'user4@example.com', 'password123', NOW()),
+
+
+Dummy SQL Queries for EV_STATIONS:
+-- Inserting dummy data into EV_STATIONS table
+INSERT INTO EV_STATIONS (name, address, facilities, contact_info, created_by, created_at)
+VALUES 
+('Green Power Station', '123 Eco Lane, Green City', 'Fast Charging, 5 Parking Spots', 'contact@greenpower.com', 1, NOW()),
+('SolarCharge Hub', '456 Sun Street, Solar Town', 'Solar Charging, 10 Parking Spots', 'info@solarcharge.com', 2, NOW()),
+('QuickCharge Center', '789 Speed Road, Fast City', 'Super Fast Charging, 8 Parking Spots', 'support@quickcharge.com', 3, NOW()),
+('EcoCharge Station', '321 Earth Avenue, Green City', 'Eco-friendly Charging, 6 Parking Spots', 'eco@ecocharging.com', 4, NOW()),
+('PowerUp Station', '654 Power Blvd, Energy City', '24/7 Charging, 12 Parking Spots', 'help@powerup.com', 5, NOW());
+
+
+
+
+
+#Supervisor login:
+ananna
+Ananna@1234
+
+##login: Environmentalist
 urmi Urmi@2025
 kuratoliev
 
