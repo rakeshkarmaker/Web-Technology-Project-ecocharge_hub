@@ -13,7 +13,11 @@ function getStationById($station_id) {
     $query = "SELECT * FROM EV_STATIONS WHERE station_id = '$station_id'";
     return get($query); // Assuming get() is a function to fetch data from the database
 }
-
+function getStationByName($name) {
+    $name = htmlspecialchars($name, ENT_QUOTES);
+    $query = "SELECT * FROM EV_STATIONS WHERE name LIKE '%$name%'";
+    return get($query); // Assuming get() is a function to fetch data from the database
+}
 // Function to get the station name by its ID
 function getStationName($station_id) {
     $station_id = intval($station_id); // Ensure station_id is an integer

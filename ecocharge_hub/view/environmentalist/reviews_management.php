@@ -22,7 +22,7 @@ $reviews = readReviewsByUser($_SESSION['user_id']); // Fetch reviews for the log
     <div class="container">
         <h1 class="page-title">Review Management</h1>
         <div class="button-container">
-            <a href="review.php" class="btn btn-primary">Add New Review</a>
+            <a href="view_stations.php" class="btn btn-primary">Add New Review</a>
         </div>
 
         <table class="table">

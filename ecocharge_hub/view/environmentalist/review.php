@@ -4,8 +4,6 @@ include_once('../../controller/authGuard.php');
 include_once('../../model/reviewDB.php');
 include_once('../../model/evStationDB.php');
 
-// Fetch all EV stations to display in the form
-$stations = getAllStations(); // Assuming you have a function to fetch all stations
 
 ?>
 
@@ -30,15 +28,9 @@ $stations = getAllStations(); // Assuming you have a function to fetch all stati
         <?php endif; ?>
 
         <form action="../../controller/reviewController.php" method="POST">
-            <div class="form-group">
-                <label for="station_id">Select Station</label>
-                <select name="station_id" id="station_id" required>
-                    <option value="">-- Select a Station --</option>
-                    <?php foreach ($stations as $station): ?>
-                        <option value="<?php echo $station['station_id']; ?>"><?php echo $station['name']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+            
+        
+            <input type="hidden" name="station_id" value="<?php echo $_GET['id']; ?>">
 
             <div class="form-group">
                 <label for="rating">Rating</label>

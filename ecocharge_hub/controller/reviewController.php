@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($result) {
         // Redirect to a success page or show a success message
-        header("Location: ../../views/reviews_management.php?success");
+        header("Location: ../view/environmentalist/reviews_management.php?success");
         exit();
     } else {
         // Redirect to an error page or show an error message
-        header("Location: ../../views/reviews_management.php?error");
+        header("Location: ../view/environmentalist/reviews_management.php?error");
         exit();
     }
 }

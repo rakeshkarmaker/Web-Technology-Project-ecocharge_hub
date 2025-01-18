@@ -70,7 +70,7 @@ CREATE TABLE FAQS (
 
 
 
-
+-- Inserting dummy users into USERS tab
 -- Inserting dummy users into USERS table
 INSERT INTO USERS (user_id, username, email, password, created_at)
 VALUES 
@@ -80,15 +80,25 @@ VALUES
 (NULL, 'user4', 'user4@example.com', 'password123', NOW()),
 
 
-Dummy SQL Queries for EV_STATIONS:
+-- Inserting dummy users into USERS EV_STATIONS
+USE ecocharge_hub;
+INSERT INTO users (name, email, phone, username, password, user_type) VALUES
+('Alice Green', 'alice.green@example.com', '+1234567890', 'aliceg', 'password_1', 'Supervisor'),
+('Bob Smith', 'bob.smith@example.com', '+1987654321', 'bobsmith', 'password_2', 'Supervisor'),
+('Charlie Johnson', 'charlie.j@example.com', '+1122334455', 'charliej', 'password_3', 'Supervisor'),
+('David Lee', 'david.lee@example.com', '+2233445566', 'davidlee', 'password_4', 'Supervisor'),
+('Emma Wilson', 'emma.w@example.com', '+3344556677', 'emmawilson', 'password_5', 'Supervisor');
+
+
 -- Inserting dummy data into EV_STATIONS table
+USE ecocharge_hub;
 INSERT INTO EV_STATIONS (name, address, facilities, contact_info, created_by, created_at)
 VALUES 
-('Green Power Station', '123 Eco Lane, Green City', 'Fast Charging, 5 Parking Spots', 'contact@greenpower.com', 1, NOW()),
-('SolarCharge Hub', '456 Sun Street, Solar Town', 'Solar Charging, 10 Parking Spots', 'info@solarcharge.com', 2, NOW()),
-('QuickCharge Center', '789 Speed Road, Fast City', 'Super Fast Charging, 8 Parking Spots', 'support@quickcharge.com', 3, NOW()),
-('EcoCharge Station', '321 Earth Avenue, Green City', 'Eco-friendly Charging, 6 Parking Spots', 'eco@ecocharging.com', 4, NOW()),
-('PowerUp Station', '654 Power Blvd, Energy City', '24/7 Charging, 12 Parking Spots', 'help@powerup.com', 5, NOW());
+('Green Power Station', '123 Eco Lane, Green City', 'Fast Charging, 5 Parking Spots', 'contact@greenpower.com', 6, NOW()),
+('SolarCharge Hub', '456 Sun Street, Solar Town', 'Solar Charging, 10 Parking Spots', 'info@solarcharge.com', 7, NOW()),
+('QuickCharge Center', '789 Speed Road, Fast City', 'Super Fast Charging, 8 Parking Spots', 'support@quickcharge.com', 8, NOW()),
+('EcoCharge Station', '321 Earth Avenue, Green City', 'Eco-friendly Charging, 6 Parking Spots', 'eco@ecocharging.com', 9, NOW()),
+('PowerUp Station', '654 Power Blvd, Energy City', '24/7 Charging, 12 Parking Spots', 'help@powerup.com', 10, NOW());
 
 
 
