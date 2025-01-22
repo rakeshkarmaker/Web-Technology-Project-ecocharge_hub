@@ -52,4 +52,15 @@ function deleteBlog($blog_id) {
     $query = "DELETE FROM BLOGS WHERE blog_id = '$blog_id'";
     return execute($query); // Use execute() to run the query
 }
+
+
+//Search by name
+
+function searchBlogsByName($searchText){
+    $query = "SELECT blogs.blog_id, blogs.title, blogs.created_at, users.name AS author
+    FROM blogs JOIN users ON blogs.user_id = users.user_id 
+    WHERE blogs.title LIKE '%$searchText%'";
+    
+    return get($query); // Use get() to fetch data
+}
 ?>

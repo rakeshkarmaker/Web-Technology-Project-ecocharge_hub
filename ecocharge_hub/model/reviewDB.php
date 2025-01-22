@@ -32,6 +32,15 @@ function readReview($review_id) {
     $query = "SELECT * FROM REVIEWS WHERE review_id = '$review_id'";
     return get($query); // Use get() to fetch data
 }
+//Search review
+function readReviewByName($searchText){
+    $searchText = htmlspecialchars($searchText, ENT_QUOTES); // Sanitize input
+    $query = "SELECT reviews.review_id, reviews.rating, reviews.review, reviews.created_at, ev_stations.name AS station
+    FROM reviews JOIN ev_stations ON reviews.station_id = ev_stations.station_id 
+    WHERE reviews.review LIKE '%$searchText%'";
+    return get($query); // Use get() to fetch data
+
+}
 
 // Update a review
 function updateReview($review_id, $rating, $review) {

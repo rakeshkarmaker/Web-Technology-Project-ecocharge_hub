@@ -27,6 +27,7 @@ $user_id = $_SESSION['user_id'] ?? null; // Default: null if user_id is not set
             <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" required><br><br>
             
             <!-- Submit Button -->
+            <a href="dashboard.php" class="btn btn-primary">Back to Dashboard</a>
             <button type="submit">Submit Document</button>
         </form>
     </div>

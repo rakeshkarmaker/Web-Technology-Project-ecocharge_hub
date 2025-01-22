@@ -53,7 +53,7 @@ $isEditMode = isset($_GET['edit']);
             <!-- View Profile Section -->
             <div class="profile-details">
                 <h2>Welcome <?php echo $_SESSION['username']; ?></h2>
-                <img src="" alt="Profile Picture" class="profile-picture">
+                <img src="<?php echo $userProfile['img'] ?? '../../images/dummy.jpg';?>" alt="Profile Picture" class="profile-picture">
                 <h2>Name: <?php echo $userProfile['name']; ?></h2>
                 <p><strong>Username:</strong> <?php echo $userProfile['username']; ?></p>
                 <p><strong>Email:</strong> <?php echo $userProfile['email']; ?></p>

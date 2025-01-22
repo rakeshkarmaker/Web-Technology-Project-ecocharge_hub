@@ -49,9 +49,9 @@ if ($search) {
 
     <!-- Search Bar -->
     <div class="search-box">
-        <form method="GET">
+        <form>
             <input type="text" name="search" placeholder="Search by Name or ID" value="<?= htmlspecialchars($search) ?>">
-            <button type="submit">Search</button>
+            <button type="submit" onclick="ajax()">Search</button>
         </form>
     </div>
 
@@ -76,6 +76,23 @@ if ($search) {
             <p style="text-align:center;">No stations found</p>
         <?php endif; ?>
     </div>
+
+    <script>
+            
+            function ajax(){
+                let name =document.getElementById('search').value;
+                let xhttp = new XMLHttpRequest();
+                xhttp.open('get', '../../model/evStationDB.php', true);
+                xhttp.send(name='name');
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.onreadystatechange = function (){
+                    if(this.readyState == 4 && this.status ==200){
+                        //alert(this.responseText);
+                        document.getElementById('head').innerHTML = this.responseText;
+                    }
+                }
+            }
+    </script>
 
 </body>
 </html>

@@ -2,7 +2,8 @@
 require_once '../model/blogDB.php'; //  the blogDB file
 
 
-function uploadImage($file) { //Upload  image file function
+function uploadImage($file)
+{ //Upload  image file function
     $uploadDir = '../uploads/blog_pic/';
     $fileName = basename($file['name']);
     $filePath = $uploadDir . $fileName;
@@ -12,10 +13,11 @@ function uploadImage($file) { //Upload  image file function
     }
     return false;
 }
- 
-function deleteImage($imagePath) { //Deleting an image file if it exists.
-    
-    
+
+function deleteImage($imagePath)
+{ //Deleting an image file if it exists.
+
+
     if (!empty($imagePath) && file_exists($imagePath)) {
         if (unlink($imagePath)) {
             return true;
@@ -27,7 +29,8 @@ function deleteImage($imagePath) { //Deleting an image file if it exists.
 }
 
 
-function handleBlogCreation() { // the blog creation Function.
+function handleBlogCreation()
+{ // the blog creation Function.
     $title = trim($_POST["title"]);
     $content = trim($_POST["content"]);
     $author = trim($_POST["user_id"]);
@@ -52,7 +55,8 @@ function handleBlogCreation() { // the blog creation Function.
     }
 }
 
-function handleBlogEditing() { // the blog Edit Function.
+function handleBlogEditing()
+{ // the blog Edit Function.
     $title = trim($_POST["title"]);
     $content = trim($_POST["content"]);
     $blog_id = trim($_POST["blog_id"]);
@@ -98,7 +102,8 @@ function handleBlogEditing() { // the blog Edit Function.
 }
 
 
-function handleBlogDeletion() { //// the blog deletion Function.
+function handleBlogDeletion()
+{ //// the blog deletion Function.
     $blog_id = trim($_GET["id"]) ?? null;
 
     if (empty($blog_id)) {
@@ -125,6 +130,23 @@ function handleBlogDeletion() { //// the blog deletion Function.
 }
 
 
+
+//Function for ajax search
+function handleBlogSearch() {
+
+    $searchText = trim($_GET['searchText']);
+    $blogs = searchBlogsByName($searchText);
+
+    if (!$blogs) {
+        echo json_encode(["error" => "No blogs found"]);
+        return;
+    } else {
+        echo json_encode($blogs); // Return JSON response
+        return;
+    }
+}
+
+
 // Main logic for handing UI Requests 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["add"])) {
@@ -134,9 +156,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo "Invalid action.";
     }
-} elseif ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['action']) && $_GET['action'] === 'delete') {
-    handleBlogDeletion();
+} elseif ($_SERVER["REQUEST_METHOD"] === "GET") { //v5.2.0- Adding AJAX for search and deletion. logic has been updated here.
+    
+    // Handling the AJAX Delete request
+    if (isset($_GET['action']) && $_GET['action'] === 'delete') {
+        handleBlogDeletion();
+    }
+    // Handling the AJAX Search request
+    elseif (isset($_GET['action']) && $_GET['action'] === 'search') {
+        handleBlogSearch();
+    }
 } else {
     echo "Form not submitted.";
 }
-?>
