@@ -75,8 +75,6 @@ if (($action_type === 'edit') && isset($_GET['id'])) {
                         
                 </div>
 
-
-
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
 

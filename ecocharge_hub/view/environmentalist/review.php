@@ -27,7 +27,7 @@ include_once('../../model/evStationDB.php');
             </div>
         <?php endif; ?>
 
-        <form action="../../controller/reviewController.php" method="POST">
+        <form action="../../controller/reviewController.php?add" method="POST">
             
         
             <input type="hidden" name="station_id" value="<?php echo $_GET['id']; ?>">
@@ -50,7 +50,7 @@ include_once('../../model/evStationDB.php');
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit Review</button>
+                <button type="submit" name="add" class="btn btn-primary">Submit Review</button>
             </div>
         </form>
 

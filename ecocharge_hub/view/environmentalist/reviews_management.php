@@ -76,21 +76,43 @@ $reviews = readReviewsByUser($_SESSION['user_id']); // Fetch reviews for the log
             let xhttp = new XMLHttpRequest();
             xhttp.open('GET', '../../controller/reviewController.php?action=search&searchText=' + search, true); // Sends the get info with the search value.
 
-            // Debug log
-            console.log("Sending request with search text:", search);
-
             xhttp.onreadystatechange = function() {
-                if (this.readyState === 4) {
+                if (this.readyState === 4) { 
                     let tableBody = document.getElementById('reviews');
                     tableBody.innerHTML = ""; // Clear existing table content
 
-                    if (this.status === 200) {
+                    if (this.status === 200) { // If the request is successful
                         let response = JSON.parse(this.responseText); // Parse the JSON response
 
                         if (response.error) {
                             tableBody.innerHTML = `<tr><td colspan="5">${response.error}</td></tr>`;
                         } else if (response.length > 0) {
                             // Dynamically build the table rows based on the response
+
+                            // response{
+                            //     review1: {
+                            //         review_id: 1,
+                            //         station: "Station 1",
+                            //         rating: 5,
+                            //         review: "Great station!",
+                            //         created_at: "2021-05-01 12:00:00"
+                            //     },
+                            //     review2: {
+                            //         review_id: 2,
+                            //         station: "Station 2",
+                            //         rating: 4,
+                            //         review: "Good station!",
+                            //         created_at: "2021-05-02 12:00:00"
+                            //     },
+                            //     review3: {
+                            //         review_id: 3,
+                            //         station: "Station 3",
+                            //         rating: 3,
+                            //         review: "Average station!",
+                            //         created_at: "2021-05-03 12:00:00"
+                            //     }
+                            // }
+                            
                             response.forEach(reviews => {
                                 let row = `<tr>
                                     <td>${reviews.review_id}</td>

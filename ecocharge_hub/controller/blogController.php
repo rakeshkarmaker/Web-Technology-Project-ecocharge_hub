@@ -129,8 +129,6 @@ function handleBlogDeletion()
     }
 }
 
-
-
 //Function for ajax search
 function handleBlogSearch() {
 

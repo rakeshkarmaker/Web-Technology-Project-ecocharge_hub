@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 } elseif($_SERVER["REQUEST_METHOD"] === "GET"){
+
     // Handling the AJAX Delete request
     if (isset($_GET['action']) && $_GET['action'] === 'delete') {
         handleReviewDeletion();
